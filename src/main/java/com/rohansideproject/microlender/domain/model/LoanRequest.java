@@ -3,8 +3,14 @@ package com.rohansideproject.microlender.domain.model;
 import java.time.Duration;
 import java.util.Objects;
 
-public class LoanRequest {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public final class LoanRequest {
 	
+	@Id
+	private long id;
 	private final int amount;
 	private final User borrower;
 	private final Duration repaymentTerm;

@@ -2,8 +2,14 @@ package com.rohansideproject.microlender.domain.model;
 
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public final class User {
 	
+	@Id
+	private long id;
 	private final String firstName;
 	private final String lastName;
 	private final int age;
@@ -58,6 +64,13 @@ public final class User {
 	}
 
 
+	@Override
+	public String toString() {
+		return "User [firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + ", occupation=" + occupation
+				+ "]";
+	}
+
+	
 	
 	
 }
