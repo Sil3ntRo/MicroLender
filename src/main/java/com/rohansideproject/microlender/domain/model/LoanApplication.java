@@ -5,18 +5,24 @@ import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
-public final class LoanRequest {
+public final class LoanApplication {
 	
 	@Id
 	private long id;
-	private final int amount;
-	private final User borrower;
-	private final Duration repaymentTerm;
-	private final double interestRate;
+	private int amount;
+	@ManyToOne
+	private User borrower;
+	private Duration repaymentTerm;
+	private double interestRate;
 	
-	public LoanRequest(int amount, User borrower, Duration repaymentTerm, double interestRate) {
+	public LoanApplication() {
+		
+	}
+	
+	public LoanApplication(int amount, User borrower, Duration repaymentTerm, double interestRate) {
 		this.amount = amount;
 		this.borrower = borrower;
 		this.repaymentTerm = repaymentTerm;
@@ -52,7 +58,7 @@ public final class LoanRequest {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		LoanRequest other = (LoanRequest) obj;
+		LoanApplication other = (LoanApplication) obj;
 		return amount == other.amount && Objects.equals(borrower, other.borrower)
 				&& Double.doubleToLongBits(interestRate) == Double.doubleToLongBits(other.interestRate)
 				&& Objects.equals(repaymentTerm, other.repaymentTerm);
