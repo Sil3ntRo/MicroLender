@@ -27,7 +27,7 @@ public class LoanApplicationAdapter {
 		
 		if(userOptional.isPresent()) {
 			return new LoanApplication(req.getAmount(), userOptional.get(),
-					Duration.ofDays(req.getDaysToRepay()), req.getInterestRate());
+					req.getDaysToRepay(), req.getInterestRate());
  
 		}
 		else {

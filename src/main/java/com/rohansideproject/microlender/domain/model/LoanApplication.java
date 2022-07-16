@@ -15,17 +15,17 @@ public final class LoanApplication {
 	private int amount;
 	@ManyToOne
 	private User borrower;
-	private Duration repaymentTerm;
+	private int repaymentTermInDays;
 	private double interestRate;
 	
 	public LoanApplication() {
 		
 	}
 	
-	public LoanApplication(int amount, User borrower, Duration repaymentTerm, double interestRate) {
+	public LoanApplication(int amount, User borrower, int repaymentTermInDays, double interestRate) {
 		this.amount = amount;
 		this.borrower = borrower;
-		this.repaymentTerm = repaymentTerm;
+		this.repaymentTermInDays = repaymentTermInDays;
 		this.interestRate = interestRate;
 	}
 
@@ -37,17 +37,21 @@ public final class LoanApplication {
 		return borrower;
 	}
 
-	public Duration getRepaymentTerm() {
-		return repaymentTerm;
+	public int getRepaymentTermInDays() {
+		return repaymentTermInDays;
 	}
 
 	public double getInterestRate() {
 		return interestRate;
 	}
 
+	public long getId() {
+		return id;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(amount, borrower, interestRate, repaymentTerm);
+		return Objects.hash(amount, borrower, interestRate, repaymentTermInDays);
 	}
 
 	@Override
@@ -61,12 +65,12 @@ public final class LoanApplication {
 		LoanApplication other = (LoanApplication) obj;
 		return amount == other.amount && Objects.equals(borrower, other.borrower)
 				&& Double.doubleToLongBits(interestRate) == Double.doubleToLongBits(other.interestRate)
-				&& Objects.equals(repaymentTerm, other.repaymentTerm);
+				&& Objects.equals(repaymentTermInDays, other.repaymentTermInDays);
 	}
 
 	@Override
 	public String toString() {
-		return "LoanRequest [amount=" + amount + ", borrower=" + borrower + ", repaymentTerm=" + repaymentTerm
+		return "LoanRequest [amount=" + amount + ", borrower=" + borrower + ", repaymentTerm=" + repaymentTermInDays
 				+ ", interestRate=" + interestRate + "]";
 	}
 	
