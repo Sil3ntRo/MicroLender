@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public final class User {
 	
 	@Id
-	private long id;
+	private String username;
 	private String firstName;
 	private String lastName;
 	private int age;
@@ -20,14 +20,18 @@ public final class User {
 		
 	}
 	
-	public User(long id, String firstName, String lastName, int age, String occupation) {
-		this.id = id;
+	public User(String username, String firstName, String lastName, int age, String occupation) {
+		this.username = username;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
 		this.occupation = occupation;
 	}
+	
 
+	public String getUsername() {
+		return username;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -48,12 +52,10 @@ public final class User {
 		return occupation;
 	}
 
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(age, firstName, lastName, occupation);
+		return Objects.hash(age, firstName, lastName, occupation, username);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -63,19 +65,17 @@ public final class User {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User user = (User) obj;
-		return age == user.age && Objects.equals(firstName, user.firstName)
-				&& Objects.equals(lastName, user.lastName) && Objects.equals(occupation, user.occupation);
+		User other = (User) obj;
+		return age == other.age && Objects.equals(firstName, other.firstName)
+				&& Objects.equals(lastName, other.lastName) && Objects.equals(occupation, other.occupation)
+				&& Objects.equals(username, other.username);
 	}
-
 
 	@Override
 	public String toString() {
-		return "User [firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + ", occupation=" + occupation
-				+ "]";
+		return "User [username=" + username + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age
+				+ ", occupation=" + occupation + "]";
 	}
-
-	
 	
 	
 }

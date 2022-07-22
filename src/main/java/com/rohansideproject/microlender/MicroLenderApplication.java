@@ -20,8 +20,8 @@ public class MicroLenderApplication implements CommandLineRunner {
 	
 	@Override
 	public void run(String...args) throws Exception {
-		userRepository.save(new User(1, "John", "B", 27, "Software Engineer" ));
-		userRepository.save(new User(2, "Peter", "C", 24, "Pilot" ));
-		userRepository.save(new User(3, "Zack", "E", 23, "Unemployed" ));
+		userRepository.save(new User("Rohan", "Rohan", "B", 27, "Software Engineer" ));
+		userRepository.save(new User("Sita", "Sita", "C", 24, "Pilot" ));
+		userRepository.save(new User("Zack", "Zack", "E", 23, "Unemployed" ));
 	}
 }
